@@ -10,28 +10,26 @@ const Home = () => {
     }, [dispatch])
     const data = useSelector((state) => state.records);
     console.log(data);
-    const title = useSelector((state) => state.data.title);
-    const year = useSelector((state) => state.data.year);
+    const record = useSelector((state) => state.data);
+    console.log(record);
     const onchangeInput = (e) => {
-        dispatch(userData({ [e.target.name]: e.target.value }))
+        dispatch(userData({ ...record, [e.target.name]: e.target.value }))
     }
     const onClickButton = () => {
-        dispatch(getDataByTitle(title, year))
+        dispatch(getDataByTitle(record))
     }
-    const plot = useSelector((state) => state.data.plot);
-    const id = useSelector((state) => state.data.id);
     const onClickButton2 = () => {
-        dispatch(getDataByID(id, plot));
+        dispatch(getDataByID(record));
     }
 
     return (
         <>
-        <h1>By Title</h1>
+            <h1>By Title</h1>
             <form >
                 <div className="form" style={{ display: 'inline-flex' }}>
                     <div className="form-group" >
                         <label htmlFor="exampleInput1">Title</label>
-                        <input type="text" className="form-control" name="title" aria-describedby="usernameHelp" placeholder="Title" onChange={(e) => onchangeInput(e)} />
+                        <input type="text" className="form-control" name="title" placeholder="Title" onChange={(e) => onchangeInput(e)} />
                     </div>
                     <div>
                         <label htmlFor="exampleInputPassword1">Year</label>
@@ -72,7 +70,7 @@ const Home = () => {
                 <div className="form" style={{ display: 'inline-flex' }}>
                     <div className="form-group" >
                         <label htmlFor="exampleInput1">ID</label>
-                        <input type="text" className="form-control" name="id" aria-describedby="usernameHelp" placeholder="IMDb ID" onChange={(e) => onchangeInput(e)} />
+                        <input type="text" className="form-control" name="id" placeholder="IMDb ID" onChange={(e) => onchangeInput(e)} />
                     </div>
                     <div>
                         <label htmlFor="exampleInputPassword1">Plot</label>

@@ -1,4 +1,4 @@
-import { SET_DATA, USER_DATA, DATA_BY_TITLE, DATA_BY_ID} from "../Actions/action";
+import { SET_DATA, USER_DATA, DATA_BY_TITLE, DATA_BY_ID, DATA_ID} from "../Actions/action";
 
 const initialState = {
     records: [],
@@ -7,8 +7,8 @@ const initialState = {
         year: '',
         plot: '',
         response: '',
+        id:''
     },
-    title: []
 }
 function reducer(state = initialState, action) {
     switch (action.type) {

@@ -11,18 +11,19 @@ export const getData = () => async (dispatch, getState) => {
         console.log(error);
     }
 }
-export const getDataByTitle = (title, year) => async (dispatch, getState) => {
+export const getDataByTitle = (record) => async (dispatch, getState) => {
     try {
-        const res = await axios.get(`${url}/?t=${title}&y=${year}&apikey=9597cff7&`);
+        console.log(`${url}/?t=${record.title}&y=${record.year}&apikey=9597cff7`)
+        const res = await axios.get(`${url}/?t=${record.title}&y=${record.year}&apikey=9597cff7&`);
         console.log(res.data);
         dispatch(setDataByTitle(res.data));
     } catch (error) {
         console.log(error);
     }
 }
-export const getDataByID = (id, plot) => async (dispatch, getState) => {
+export const getDataByID = (record) => async (dispatch, getState) => {
     try {
-        const res = await axios.get(`${url}/?i=${id}&plot=${plot}&apikey=9597cff7&`);
+        const res = await axios.get(`${url}/?i=${record.id}&plot=${record.plot}&apikey=9597cff7&`);
         console.log(res.data);
         dispatch(setDataByID(res.data));
     } catch (error) {
